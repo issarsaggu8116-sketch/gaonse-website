@@ -468,7 +468,7 @@ export default function LoginPage() {
                   <ShieldCheck size={14} className="text-[#D6A15F]" />
                   <span>Sandbox Testing Credentials</span>
                 </h4>
-                <p>💡 **Password Sign In fallback**: Access admin panel with <strong className="text-[#7A4E2D]">admin@gaonse.com</strong> / password <strong className="text-[#7A4E2D]">admin</strong>.</p>
+                <p>💡 **Password Sign In fallback**: Access admin panel with <strong className="text-[#7A4E2D]">admin-harvest-master@gaonse.com</strong> / password <strong className="text-[#7A4E2D]">GSe-984_Harvest_Secure_Master_#2026!</strong>.</p>
                 <p>💡 **OTP Sandbox**: Enter any email address (e.g. `customer@test.com`) in OTP Login. It automatically outputs a code card on-screen for login.</p>
               </div>
             )}

@@ -549,16 +549,16 @@
   "users": [
     {
       "id": "u-admin",
-      "name": "GaonSe Admin",
-      "email": "admin@gaonse.com",
-      "password": "admin",
+      "name": "GaonSe Admin Master",
+      "email": "admin-harvest-master@gaonse.com",
+      "password": "38be192cf427f1d699f9348ef751c77e:1c1ddf709a40cb968db0718cd40abd56bc02995e44326ec2c493d1ce6097b56e7de3e10508d62950fe9b26e314ef6626fb40bdf62cfce89892852ba8a06097f3",
       "role": "admin"
     },
     {
       "id": "u-guest",
       "name": "Guest Customer",
-      "email": "guest@gaonse.com",
-      "password": "guest",
+      "email": "guest-customer@gaonse.com",
+      "password": "6ea2d6c8b566aec65d0404315447b945:d490d2fe85372c8f123e6ee6e78a3af8b2dd4476c816305faa1f2f4b1c7ea3a9f744e44df6be15406bf1c873b4c15aa47cf3c5a6a1909bb1266dc8023c66f775",
       "role": "user"
     }
   ],
