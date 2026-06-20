@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #7A4E2D; /* Earth Brown / Light Brown */
+  --color-primary-light: #9C6644; /* Light Brown */
+  --color-primary-dark: #5C381E; /* Dark Brown */
+  --color-secondary: #D6A15F; /* Golden Jaggery */
+  --color-accent: #4CAF50; /* Natural Green */
+  --color-accent-light: #81C784; /* Soft Green */
+  --color-cream-light: #FDFBF7; /* Light Cream background */
+  --color-cream-medium: #F5EFEB; /* Medium light cream background */
+  --color-cream-dark: #EADDC9; /* Darker cream background */
+  --color-theme-white: #FFFFFF; /* Pure white background */
+  
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+  --animate-slide-up: slide-up 0.5s ease-out forwards;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+:root {
+  --background: #FDFBF7; /* Light Cream background */
+  --foreground: #2C2520; /* Soft dark brown instead of charcoal for warm rural premium feel */
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom Serif heading typography utility */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: #5C381E; /* Default dark brown for headings */
+}
+
+/* Custom scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FDFBF7;
+}
+::-webkit-scrollbar-thumb {
+  background: #D6A15F;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7A4E2D;
+}

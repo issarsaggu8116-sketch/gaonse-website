@@ -1,0 +1,635 @@
+{
+  "products": [
+    {
+      "id": "gud-block-01",
+      "name": "Organic Sugarcane Jaggery Blocks (Desi Gud)",
+      "slug": "organic-sugarcane-jaggery-blocks",
+      "category": "Jaggery",
+      "price": 120,
+      "description": "100% natural, chemical-free jaggery blocks prepared by traditional clarifiers in wood-fired iron pans.",
+      "longDescription": "Sourced directly from the sugarcane belts of Muzaffarnagar, Uttar Pradesh, our traditional Jaggery (Desi Gud) is made by extracting fresh juice from organically grown sugarcane, clarifying it using natural wild okra stems (deola), and boiling it in iron pans over wood fires. Unlike commercial jaggery, it contains no chemical clarifying agents, sulfur, or artificial colors, preserving its mineral-rich golden goodness.",
+      "ingredients": [
+        "100% Organic Sugarcane Juice"
+      ],
+      "benefits": [
+        "Natural detoxifier that helps cleanse the liver",
+        "Rich in essential minerals like Iron, Magnesium, and Potassium",
+        "Improves digestion and prevents acidity",
+        "Provides sustained energy without spike in sugar levels"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1613756241071-70bf8fc0e6f6?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=600&q=80"
+      ],
+      "video": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "weightOptions": [
+        {
+          "id": "w1",
+          "weight": "250g",
+          "price": 120
+        },
+        {
+          "id": "w2",
+          "weight": "500g",
+          "price": 210
+        },
+        {
+          "id": "w3",
+          "weight": "1kg",
+          "price": 380
+        }
+      ],
+      "rating": 4.8,
+      "reviews": [
+        {
+          "id": "r1",
+          "name": "Suresh Kumar",
+          "rating": 5,
+          "comment": "Reminds me of my childhood days in the village! The taste is so authentic, not salty or overly sweet like chemical-laden shop gud.",
+          "date": "2026-05-12"
+        },
+        {
+          "id": "r2",
+          "name": "Aparna Sharma",
+          "rating": 4,
+          "comment": "Excellent quality and texture. Perfect for tea and sweet dishes. Packing could be slightly better.",
+          "date": "2026-06-01"
+        }
+      ],
+      "origin": "Muzaffarnagar, Uttar Pradesh",
+      "farmer": "Shri Ram Swaroop & Family",
+      "farmerImage": "https://images.unsplash.com/photo-1566908829550-e6551b00979b?auto=format&fit=crop&w=300&q=80",
+      "farmerStory": "Ram Swaroop's family has been farming sugarcane organically for three generations. They run a small 'Kolhu' (jaggery processing cottage unit) utilizing agricultural waste for fuel, keeping traditional jaggery-making alive.",
+      "inStock": true,
+      "isFeatured": true
+    },
+    {
+      "id": "gud-spiced-02",
+      "name": "Spiced Masala Jaggery Powder",
+      "slug": "spiced-masala-jaggery-powder",
+      "category": "Jaggery",
+      "price": 150,
+      "description": "Mineral-rich jaggery powder infused with dry ginger, black pepper, cardamom, and nutmeg.",
+      "longDescription": "Our Spiced Masala Jaggery Powder is a winter staple and immune-boosting sweetener. The organic jaggery is finely powdered and thoroughly blended with hand-ground dry ginger (sonth), black pepper, cardamom, and a touch of nutmeg. Ideal for sweetening your morning tea, golden milk, or consuming a spoonful after meals to assist digestion.",
+      "ingredients": [
+        "Organic Sugarcane Jaggery",
+        "Dry Ginger",
+        "Black Pepper",
+        "Green Cardamom",
+        "Nutmeg"
+      ],
+      "benefits": [
+        "Combats seasonal cold, cough, and throat irritation",
+        "Stimulates digestive enzymes, reducing post-meal heaviness",
+        "Rich in warmth-producing spices that boost circulation",
+        "Pure alternative to refined white sugar in hot beverages"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=600&q=80"
+      ],
+      "video": "https://www.w3schools.com/html/movie.mp4",
+      "weightOptions": [
+        {
+          "id": "w1",
+          "weight": "250g",
+          "price": 150
+        },
+        {
+          "id": "w2",
+          "weight": "500g",
+          "price": 270
+        },
+        {
+          "id": "w3",
+          "weight": "1kg",
+          "price": 490
+        }
+      ],
+      "rating": 4.9,
+      "reviews": [
+        {
+          "id": "r1",
+          "name": "Vikram Malhotra",
+          "rating": 5,
+          "comment": "I use this in my ginger tea every single morning. It dissolves easily and gives an amazing, spicy aroma.",
+          "date": "2026-05-24"
+        }
+      ],
+      "origin": "Kolhapur, Maharashtra",
+      "farmer": "Shinde Agro Farmers Cooperative",
+      "farmerImage": "https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?auto=format&fit=crop&w=300&q=80",
+      "farmerStory": "A collective of 12 smallholder families in Kolhapur who transitioned to chemical-free sugarcane farming and collaborated to establish clean, hygienic dry-processing units for jaggery powder.",
+      "inStock": true,
+      "isFeatured": true
+    },
+    {
+      "id": "pickle-mango-01",
+      "name": "Sun-Dried Traditional Mango Pickle (Aam Ka Achar)",
+      "slug": "sun-dried-traditional-mango-pickle",
+      "category": "Pickles",
+      "price": 180,
+      "description": "Classic oil-matured Ramkela mango pickle with hand-pounded spices and cold-pressed mustard oil.",
+      "longDescription": "Prepared by rural women in Varanasi, this pickle features sour, pulpy Ramkela mangoes sliced and cured in the sun. The pickle is dry-spiced with yellow mustard, fennel, fenugreek seeds, nigella seeds (kalonji), and red chilies, then fully submerged in cold-pressed raw mustard oil. It is slowly matured in ceramic jars (martabans) for 21 days under direct sun, allowing the flavors to peak without chemical preservatives.",
+      "ingredients": [
+        "Raw Mango Pieces",
+        "Cold-Pressed Mustard Oil",
+        "Fennel Seeds",
+        "Mustard Seeds",
+        "Fenugreek",
+        "Nigella Seeds",
+        "Asafoetida (Hing)",
+        "Turmeric",
+        "Salt"
+      ],
+      "benefits": [
+        "Natural source of gut-friendly probiotics due to fermentation",
+        "Stimulates appetite and digestive juices",
+        "Antioxidant-rich raw mangoes and spices preserve immunity",
+        "No vinegar, acetic acid, or artificial preservatives used"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80"
+      ],
+      "video": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "weightOptions": [
+        {
+          "id": "w1",
+          "weight": "250g",
+          "price": 180
+        },
+        {
+          "id": "w2",
+          "weight": "500g",
+          "price": 320
+        },
+        {
+          "id": "w3",
+          "weight": "1kg",
+          "price": 580
+        }
+      ],
+      "rating": 4.7,
+      "reviews": [
+        {
+          "id": "r1",
+          "name": "Meenakshi Iyer",
+          "rating": 5,
+          "comment": "Tastes exactly like the one my dadi used to make in the village! The oil has that pungent punch of pure mustard oil.",
+          "date": "2026-06-11"
+        },
+        {
+          "id": "r2",
+          "name": "Rohan Das",
+          "rating": 4,
+          "comment": "Spicy and sour. Good balance of spices. Goes amazing with warm parathas.",
+          "date": "2026-06-18"
+        }
+      ],
+      "origin": "Varanasi, Uttar Pradesh",
+      "farmer": "Ganga Rural Women's Self-Help Group (SHG)",
+      "farmerImage": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
+      "farmerStory": "A collective of 18 village women who generate independent livelihoods by using their traditional pickling expertise to produce seasonal pickles under strict quality and hygiene standards.",
+      "inStock": true,
+      "isFeatured": true
+    },
+    {
+      "id": "murabba-amla-01",
+      "name": "Sweet Banarasi Amla Murabba",
+      "slug": "sweet-banarasi-amla-murabba",
+      "category": "Murabba",
+      "price": 210,
+      "description": "Juicy, large Banarasi gooseberries preserved in organic sugar syrup and flavored with cardamom.",
+      "longDescription": "Our Amla Murabba features premium-grade, vitamin C-rich Banarasi Amla. The gooseberries are repeatedly pricked and steeped in pure sugar syrup flavored with green cardamom and saffron until they turn translucent, soft, and resemble gulab jamuns. This traditional preparation maintains the natural immunity-boosting potency of Amla while removing its characteristic astringency.",
+      "ingredients": [
+        "Fresh Banarasi Amla (Gooseberry)",
+        "Organic Sugar",
+        "Green Cardamom",
+        "Saffron Threads",
+        "Lemon Juice"
+      ],
+      "benefits": [
+        "Powerhouse of Vitamin C and antioxidants that boost immunity",
+        "Excellent tonic for skin, hair, and eye health",
+        "Acts as a body coolant and balances acidity (pitta)",
+        "Traditional energy booster when taken on an empty stomach in mornings"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80"
+      ],
+      "video": "https://www.w3schools.com/html/movie.mp4",
+      "weightOptions": [
+        {
+          "id": "w1",
+          "weight": "500g",
+          "price": 210
+        },
+        {
+          "id": "w2",
+          "weight": "1kg",
+          "price": 390
+        }
+      ],
+      "rating": 4.8,
+      "reviews": [
+        {
+          "id": "r1",
+          "name": "Dr. Anil Sharma",
+          "rating": 5,
+          "comment": "I prescribe a piece of Amla Murabba to my family every morning. This is genuinely organic and lacks that chemical sulfur taste.",
+          "date": "2026-05-15"
+        }
+      ],
+      "origin": "Jaunpur, Uttar Pradesh",
+      "farmer": "Kisan Farmer Producer Org (FPO)",
+      "farmerImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+      "farmerStory": "Consists of 30+ organic orchardists who pool their fresh, wild-harvested Amla crops to produce high-value murabbas right in their village processing centers, ensuring local retention of value.",
+      "inStock": true,
+      "isFeatured": false
+    },
+    {
+      "id": "honey-forest-01",
+      "name": "Raw Wild Forest Honey",
+      "slug": "raw-wild-forest-honey",
+      "category": "Honey",
+      "price": 250,
+      "description": "Unfiltered, unpasteurized honey harvested from multi-floral wild hives in the Satpura range.",
+      "longDescription": "Harvested from the deep forests of the Satpura mountain range in Madhya Pradesh, our Raw Wild Forest Honey is completely unfiltered and unheated. It is collected using sustainable, non-destructive bee-friendly practices by local Gond tribal communities. Containing natural pollen grains, trace elements, and enzymes, this honey retains its authentic dark hue and woody, floral aroma.",
+      "ingredients": [
+        "100% Pure Raw Forest Honey"
+      ],
+      "benefits": [
+        "Natural antibacterial, antifungal, and antiviral property",
+        "Rich in native pollen that aids seasonal allergy resistance",
+        "Soothes sore throats and works as a natural sleep aid",
+        "Contains zero sugar syrups, colorings, or added moisture"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&w=600&q=80"
+      ],
+      "video": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "weightOptions": [
+        {
+          "id": "w1",
+          "weight": "250g",
+          "price": 250
+        },
+        {
+          "id": "w2",
+          "weight": "500g",
+          "price": 440
+        },
+        {
+          "id": "w3",
+          "weight": "1kg",
+          "price": 820
+        }
+      ],
+      "rating": 4.95,
+      "reviews": [
+        {
+          "id": "r1",
+          "name": "Priya Rajan",
+          "rating": 5,
+          "comment": "Simply outstanding! You can feel the distinct wild flower taste. It crystallizes in cold weather, which proves its absolute purity.",
+          "date": "2026-06-08"
+        }
+      ],
+      "origin": "Satpura Forests, Madhya Pradesh",
+      "farmer": "Satpura Tribal Honey Gatherers Union",
+      "farmerImage": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=300&q=80",
+      "farmerStory": "A collective of forest-dwelling Gond tribesmen trained in scientific, non-lethal honey harvesting. By purchasing this honey, you directly sustain their livelihood and conserve wild honeybees.",
+      "inStock": true,
+      "isFeatured": true
+    },
+    {
+      "id": "spices-turmeric-01",
+      "name": "Stone-Ground Lakadong Turmeric Powder",
+      "slug": "stone-ground-lakadong-turmeric-powder",
+      "category": "Spices",
+      "price": 140,
+      "description": "High-curcumin (7%+) turmeric, cold-milled on traditional stone grinders (silbattas) to preserve volatile oils.",
+      "longDescription": "Hailing from the pristine hills of Lakadong, Meghalaya, this turmeric is famous for its exceptionally high curcumin content of 7% to 9% (compared to standard turmeric which has 2% to 3%). In order to keep its volatile oils and medicinal values intact, the dried roots are hand-crushed and slowly milled using cold stone grinders. Its vibrant orange color and intense aroma highlight its unmatched quality.",
+      "ingredients": [
+        "Pure Lakadong Turmeric Roots"
+      ],
+      "benefits": [
+        "Highly potent anti-inflammatory and antioxidant supplement",
+        "Boosts immunity, skin clarity, and joint health",
+        "Increases bioavailability of foods when combined with black pepper",
+        "No added starches, dyes, lead chromate, or chemical fillers"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=600&q=80"
+      ],
+      "video": "https://www.w3schools.com/html/movie.mp4",
+      "weightOptions": [
+        {
+          "id": "w1",
+          "weight": "100g",
+          "price": 140
+        },
+        {
+          "id": "w2",
+          "weight": "250g",
+          "price": 310
+        },
+        {
+          "id": "w3",
+          "weight": "500g",
+          "price": 580
+        }
+      ],
+      "rating": 4.9,
+      "reviews": [
+        {
+          "id": "r1",
+          "name": "Rajesh Varma",
+          "rating": 5,
+          "comment": "I used to get turmeric from big brands, but this Lakadong turmeric is on another level. The color is deep orange and the smell is incredible.",
+          "date": "2026-05-18"
+        }
+      ],
+      "origin": "Jaintia Hills, Meghalaya",
+      "farmer": "Kong Grace & Meghalaya Hill Farmers",
+      "farmerImage": "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=300&q=80",
+      "farmerStory": "Grace leads an all-women group of farmers in Meghalaya cultivating authentic Lakadong turmeric using organic compost, carrying forward ancient agricultural practices of the Khasi-Jaintia tribes.",
+      "inStock": true,
+      "isFeatured": true
+    },
+    {
+      "id": "millet-ragi-01",
+      "name": "Sprouted Finger Millet (Ragi) Flour",
+      "slug": "sprouted-finger-millet-ragi-flour",
+      "category": "Millets",
+      "price": 90,
+      "description": "Nutritious, gluten-free flour made by sprouting organic ragi grains, sun-drying, and slow stone milling.",
+      "longDescription": "Our Sprouted Ragi Flour (Nachni Atta) is a highly digestible, gluten-free superfood. Fresh ragi is washed, soaked for 12 hours, sprouted carefully, sun-dried, and then ground in a traditional stone chakki. Sprouting multiplies the bioavailable calcium and iron content while neutralizing phytic acid, making it extremely gentle on the stomach and an ideal nutritional food for infants and elders.",
+      "ingredients": [
+        "100% Sprouted Finger Millet (Ragi)"
+      ],
+      "benefits": [
+        "Contains 10x more Calcium than wheat or rice, reinforcing bone density",
+        "Sprouting reduces starch and enhances fiber and protein digestion",
+        "Low glycemic index, helping regulate blood sugar levels",
+        "Gluten-free flour alternative rich in iron and amino acids"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1574316071802-0d684efa7bf5?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80"
+      ],
+      "video": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "weightOptions": [
+        {
+          "id": "w1",
+          "weight": "500g",
+          "price": 90
+        },
+        {
+          "id": "w2",
+          "weight": "1kg",
+          "price": 160
+        }
+      ],
+      "rating": 4.6,
+      "reviews": [
+        {
+          "id": "r1",
+          "name": "Kirti Deshmukh",
+          "rating": 5,
+          "comment": "I make ragi porridge for my 1-year-old child daily. Very fine texture and sweet aroma. Knowing it's organic and sprouted gives absolute peace of mind.",
+          "date": "2026-06-03"
+        }
+      ],
+      "origin": "Mandya, Karnataka",
+      "farmer": "Mandya Organic Farmers Guild",
+      "farmerImage": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
+      "farmerStory": "A guild of dryland farmers in Karnataka dedicated to climate-resilient agriculture. They cultivate traditional millets utilizing rainwater harvesting, showcasing sustainable organic dryland farming.",
+      "inStock": true,
+      "isFeatured": false
+    },
+    {
+      "id": "trad-ghee-01",
+      "name": "A2 Bilona Cow Ghee (Vedic Method)",
+      "slug": "a2-bilona-cow-ghee-vedic",
+      "category": "Millets",
+      "price": 650,
+      "description": "Premium A2 ghee made from the curd of free-grazing indigenous Hallikar cows, hand-churned in clay pots.",
+      "longDescription": "Our A2 Bilona Ghee is prepared strictly according to Vedic guidelines. Raw A2 milk from grass-fed Hallikar cows is boiled in brass vessels, cultured into curd, and then slowly churned using a two-way wooden churner (Bilona) in clay pots. The butter (makhan) is separated and simmered over a traditional cow-dung cake fire to produce golden, granular, aromatic ghee containing zero additives or synthetic milk boosters.",
+      "ingredients": [
+        "A2 Cow Milk Butter Fats"
+      ],
+      "benefits": [
+        "Rich in fat-soluble vitamins (A, D, E, K) and short-chain fatty acids",
+        "Contains Butyric acid which supports gut wall health and digestion",
+        "Promotes mental clarity, joint lubrication, and heart health",
+        "Has a high smoke point (250°C), making it excellent for high-heat cooking"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+      ],
+      "video": "https://www.w3schools.com/html/movie.mp4",
+      "weightOptions": [
+        {
+          "id": "w1",
+          "weight": "250ml",
+          "price": 650
+        },
+        {
+          "id": "w2",
+          "weight": "500ml",
+          "price": 1200
+        },
+        {
+          "id": "w3",
+          "weight": "1L",
+          "price": 2250
+        }
+      ],
+      "rating": 4.98,
+      "reviews": [
+        {
+          "id": "r1",
+          "name": "Siddharth Verma",
+          "rating": 5,
+          "comment": "Mind-blowing aroma! The granular texture is perfect. Reminds me of my grandmother's kitchen. Worth every rupee.",
+          "date": "2026-06-14"
+        }
+      ],
+      "origin": "Mandya, Karnataka",
+      "farmer": "Shri Hallikar Cow Sanctuary & Farms",
+      "farmerImage": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=300&q=80",
+      "farmerStory": "A cowshed that rescues native Hallikar cows, allowing them to graze freely in wild forest lands. The milk is gathered only after calves are well fed.",
+      "inStock": true,
+      "isFeatured": true
+    },
+    {
+      "id": "p-1781971039945",
+      "rating": 5,
+      "reviews": [],
+      "name": "Kashmiri Mirch",
+      "category": "Spices",
+      "price": 90,
+      "description": "Authentic, vibrant, and mildly hot red chili powder.",
+      "longDescription": "Sourced from the sun-drenched valley fields of Jammu & Kashmir, our Kashmiri Mirch is stone-ground by local cooperative groups. Perfect for adding a rich crimson red hue and a mild, pleasant heat to traditional curries and pickles.",
+      "ingredients": [
+        "Kashmiri Red Chili"
+      ],
+      "benefits": [
+        "Rich in Vitamin C",
+        "boosts metabolism",
+        "natural antioxidant"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&auto=format&fit=crop&q=60"
+      ],
+      "video": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "origin": "Pulwama, Jammu & Kashmir",
+      "farmer": "Shri Rajesh Dhar",
+      "farmerImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=60",
+      "farmerStory": "Rajesh grows traditional mild chilies in Pulwama using organic compost and spring water.",
+      "inStock": true,
+      "isFeatured": true,
+      "weightOptions": [
+        {
+          "weight": "100g",
+          "price": 90
+        },
+        {
+          "weight": "200g",
+          "price": 170
+        }
+      ],
+      "slug": "kashmiri-mirch"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Jaggery",
+      "slug": "jaggery",
+      "count": 2,
+      "image": "https://images.unsplash.com/photo-1613756241071-70bf8fc0e6f6?auto=format&fit=crop&w=300&q=80"
+    },
+    {
+      "name": "Pickles",
+      "slug": "pickles",
+      "count": 1,
+      "image": "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&w=300&q=80"
+    },
+    {
+      "name": "Murabba",
+      "slug": "murabba",
+      "count": 1,
+      "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=300&q=80"
+    },
+    {
+      "name": "Honey",
+      "slug": "honey",
+      "count": 1,
+      "image": "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=300&q=80"
+    },
+    {
+      "name": "Spices",
+      "slug": "spices",
+      "count": 2,
+      "image": "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=300&q=80"
+    },
+    {
+      "name": "Millets",
+      "slug": "millets",
+      "count": 2,
+      "image": "https://images.unsplash.com/photo-1574316071802-0d684efa7bf5?auto=format&fit=crop&w=300&q=80"
+    }
+  ],
+  "users": [
+    {
+      "id": "u-admin",
+      "name": "GaonSe Admin",
+      "email": "admin@gaonse.com",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "id": "u-guest",
+      "name": "Guest Customer",
+      "email": "guest@gaonse.com",
+      "password": "guest",
+      "role": "user"
+    }
+  ],
+  "orders": [
+    {
+      "id": "GS-616898",
+      "date": "2026-06-20",
+      "status": "Dispatched",
+      "trackingId": "DL-832948",
+      "cart": [
+        {
+          "product": {
+            "id": "p-1781971039945",
+            "rating": 5,
+            "reviews": [],
+            "name": "Kashmiri Mirch",
+            "category": "Spices",
+            "price": 90,
+            "description": "Authentic, vibrant, and mildly hot red chili powder.",
+            "longDescription": "Sourced from the sun-drenched valley fields of Jammu & Kashmir, our Kashmiri Mirch is stone-ground by local cooperative groups. Perfect for adding a rich crimson red hue and a mild, pleasant heat to traditional curries and pickles.",
+            "ingredients": [
+              "Kashmiri Red Chili"
+            ],
+            "benefits": [
+              "Rich in Vitamin C",
+              "boosts metabolism",
+              "natural antioxidant"
+            ],
+            "images": [
+              "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&auto=format&fit=crop&q=60"
+            ],
+            "video": "https://www.w3schools.com/html/mov_bbb.mp4",
+            "origin": "Pulwama, Jammu & Kashmir",
+            "farmer": "Shri Rajesh Dhar",
+            "farmerImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=60",
+            "farmerStory": "Rajesh grows traditional mild chilies in Pulwama using organic compost and spring water.",
+            "inStock": true,
+            "isFeatured": true,
+            "weightOptions": [
+              {
+                "weight": "100g",
+                "price": 90
+              },
+              {
+                "weight": "200g",
+                "price": 170
+              }
+            ],
+            "slug": "kashmiri-mirch"
+          },
+          "selectedWeight": {
+            "weight": "200g",
+            "price": 170
+          },
+          "quantity": 1
+        }
+      ],
+      "shippingDetails": {
+        "name": "Jane Doe",
+        "email": "jane.doe@example.com",
+        "phone": "9876543210",
+        "address": "123, Green Meadows, Sector 4",
+        "city": "Varanasi",
+        "state": "Uttar Pradesh",
+        "zip": "221005"
+      },
+      "subtotal": 170,
+      "discount": 0,
+      "delivery": 50,
+      "gst": 9,
+      "total": 229
+    }
+  ]
+}
