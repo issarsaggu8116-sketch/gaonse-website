@@ -9,6 +9,7 @@ const UserSchema = new mongoose.Schema(
     role: { type: String, default: "user" }, // admin or user
     otpCode: { type: String, default: null },
     otpExpires: { type: Date, default: null },
+    otpLastRequested: { type: Date, default: null },
     isVerified: { type: Boolean, default: false }
   },
   { timestamps: true }

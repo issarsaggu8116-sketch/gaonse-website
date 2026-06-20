@@ -102,7 +102,8 @@ export default function CheckoutPage() {
             discount,
             delivery,
             gst,
-            total
+            total,
+            couponCode: activeCoupon?.code || ""
           };
           const res = await createOrderAction(orderData);
           if (res.success) {

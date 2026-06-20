@@ -6,6 +6,8 @@ import User from "@/models/User";
 import { sendOTPEmail, sendOrderReceiptEmail, sendOrderStatusUpdateEmail } from "@/lib/email";
 import { signSession, verifySession } from "@/lib/session";
 import { hashPassword, verifyPassword } from "@/lib/password";
+import Product from "@/models/Product";
+import { coupons } from "@/data/products";
 import { 
   findUserByEmail, 
   createUser, 
@@ -187,7 +189,77 @@ export async function getOrdersAction() {
 
 export async function createOrderAction(orderData) {
   try {
-    const order = await createOrder(orderData);
+    // Validate order input structure
+    if (!orderData || !orderData.cart || !Array.isArray(orderData.cart)) {
+      return { success: false, error: "Invalid order payload: Cart is empty or malformed." };
+    }
+    
+    await dbConnect(); // ensure mongo is connected
+    
+    // Server-side price recalculation & validation
+    let calculatedSubtotal = 0;
+    for (const item of orderData.cart) {
+      if (!item.product || !item.selectedWeight) {
+        return { success: false, error: "Invalid cart item structure." };
+      }
+      const productId = item.product.id || item.product._id;
+      const dbProduct = await Product.findById(productId);
+      if (!dbProduct) {
+        return { success: false, error: `Product not found: ${item.product.name}` };
+      }
+      if (!dbProduct.inStock) {
+        return { success: false, error: `Sourced item is currently out of stock: ${dbProduct.name}` };
+      }
+      const matchedWeight = dbProduct.weightOptions.find(o => o.weight === item.selectedWeight.weight);
+      if (!matchedWeight) {
+        return { success: false, error: `Invalid weight option selected for ${dbProduct.name}` };
+      }
+      
+      calculatedSubtotal += matchedWeight.price * item.quantity;
+    }
+    
+    // Calculate Coupon discount
+    let calculatedDiscount = 0;
+    if (orderData.couponCode) {
+      const coupon = coupons.find(c => c.code.toUpperCase() === orderData.couponCode.toUpperCase());
+      if (coupon && calculatedSubtotal >= coupon.minPurchase) {
+        if (coupon.type === "percent") {
+          calculatedDiscount = Math.round((calculatedSubtotal * coupon.value) / 100);
+        } else if (coupon.type === "fixed") {
+          calculatedDiscount = coupon.value;
+        }
+      }
+    }
+    
+    // Calculate dynamic GST (5% split based on destination state)
+    const taxableAmount = Math.max(0, calculatedSubtotal - calculatedDiscount);
+    const calculatedGst = Math.round(taxableAmount * 0.05);
+    
+    // Calculate shipping fee
+    const calculatedDelivery = calculatedSubtotal >= 499 ? 0 : 50;
+    
+    // Final total calculation
+    const calculatedTotal = calculatedSubtotal - calculatedDiscount + calculatedGst + calculatedDelivery;
+    
+    // Compare server vs client calculations to prevent tampering
+    if (Math.abs(calculatedTotal - orderData.total) > 1 || 
+        Math.abs(calculatedSubtotal - orderData.subtotal) > 1 || 
+        Math.abs(calculatedDiscount - orderData.discount) > 1) {
+      return { success: false, error: "Price tampering verification failed: Total price mismatch detected." };
+    }
+    
+    // Build validated order payload
+    const validatedOrder = {
+      cart: orderData.cart,
+      shippingDetails: orderData.shippingDetails,
+      subtotal: calculatedSubtotal,
+      discount: calculatedDiscount,
+      delivery: calculatedDelivery,
+      gst: calculatedGst,
+      total: calculatedTotal
+    };
+
+    const order = await createOrder(validatedOrder);
     let emailSent = false;
     try {
       const mailRes = await sendOrderReceiptEmail(order);
@@ -240,14 +312,29 @@ export async function sendOTPAction(email) {
       return { success: false, error: "Email address is required." };
     }
 
+    const normalizedEmail = email.toLowerCase().trim();
+    let user = await User.findOne({ email: normalizedEmail });
+    
+    // Rate limiting: 60 seconds cooldown check
+    if (user && user.otpLastRequested) {
+      const timeSinceLastOtp = Date.now() - new Date(user.otpLastRequested).getTime();
+      const cooldownMs = 60 * 1000;
+      if (timeSinceLastOtp < cooldownMs) {
+        const secondsRemaining = Math.ceil((cooldownMs - timeSinceLastOtp) / 1000);
+        return { 
+          success: false, 
+          error: `Please wait ${secondsRemaining} seconds before requesting another code.` 
+        };
+      }
+    }
+
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000); // 5 minutes
 
-    let user = await User.findOne({ email: email.toLowerCase().trim() });
     if (!user) {
       user = new User({
         _id: `u-${Date.now()}`,
-        email: email.toLowerCase().trim(),
+        email: normalizedEmail,
         name: "Village Friend",
         role: "user",
         isVerified: false
@@ -256,9 +343,10 @@ export async function sendOTPAction(email) {
 
     user.otpCode = otp;
     user.otpExpires = expiresAt;
+    user.otpLastRequested = new Date();
     await user.save();
 
-    const emailResult = await sendOTPEmail(email.toLowerCase().trim(), otp);
+    const emailResult = await sendOTPEmail(normalizedEmail, otp);
 
     return { 
       success: true, 
