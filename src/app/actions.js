@@ -4,6 +4,8 @@ import { cookies } from "next/headers";
 import dbConnect from "@/lib/mongodb";
 import User from "@/models/User";
 import { sendOTPEmail, sendOrderReceiptEmail, sendOrderStatusUpdateEmail } from "@/lib/email";
+import { signSession, verifySession } from "@/lib/session";
+import { hashPassword, verifyPassword } from "@/lib/password";
 import { 
   findUserByEmail, 
   createUser, 
@@ -18,6 +20,23 @@ import {
   updateOrderStatus 
 } from "@/data/db";
 
+// Authorization Middleware Helpers
+export async function requireAdmin() {
+  const user = await getSessionUserAction();
+  if (!user || user.role !== "admin") {
+    throw new Error("Unauthorized: Admin access required.");
+  }
+  return user;
+}
+
+export async function requireUser() {
+  const user = await getSessionUserAction();
+  if (!user) {
+    throw new Error("Unauthorized: User access required.");
+  }
+  return user;
+}
+
 // Authentication Actions
 export async function loginUserAction(email, password) {
   try {
@@ -25,8 +44,17 @@ export async function loginUserAction(email, password) {
     if (!user) {
       return { success: false, error: "No account found with this email." };
     }
-    if (user.password !== password) {
+    
+    // Cryptographic verification
+    const isValid = verifyPassword(password, user.password);
+    if (!isValid) {
       return { success: false, error: "Invalid password." };
+    }
+
+    // Auto-migrate legacy plain-text passwords to hashed passwords on successful login
+    if (user.password && !user.password.includes(":")) {
+      await dbConnect();
+      await User.findByIdAndUpdate(user.id, { $set: { password: hashPassword(password) } });
     }
 
     const sessionUser = {
@@ -37,9 +65,12 @@ export async function loginUserAction(email, password) {
     };
 
     const cookieStore = await cookies();
-    cookieStore.set("gaonse_session", JSON.stringify(sessionUser), {
+    cookieStore.set("gaonse_session", signSession(sessionUser), {
       path: "/",
-      maxAge: 60 * 60 * 24 * 7 // 7 days
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax"
     });
 
     return { success: true, user: sessionUser };
@@ -56,7 +87,8 @@ export async function registerUserAction(name, email, password) {
       return { success: false, error: "An account already exists with this email." };
     }
 
-    const newUser = await createUser({ name, email, password });
+    // Cryptographically hash password before storage
+    const newUser = await createUser({ name, email, password: hashPassword(password) });
     const sessionUser = {
       id: newUser.id,
       name: newUser.name,
@@ -65,9 +97,12 @@ export async function registerUserAction(name, email, password) {
     };
 
     const cookieStore = await cookies();
-    cookieStore.set("gaonse_session", JSON.stringify(sessionUser), {
+    cookieStore.set("gaonse_session", signSession(sessionUser), {
       path: "/",
-      maxAge: 60 * 60 * 24 * 7 // 7 days
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax"
     });
 
     return { success: true, user: sessionUser };
@@ -87,11 +122,7 @@ export async function getSessionUserAction() {
   const cookieStore = await cookies();
   const session = cookieStore.get("gaonse_session");
   if (!session) return null;
-  try {
-    return JSON.parse(session.value);
-  } catch (e) {
-    return null;
-  }
+  return verifySession(session.value);
 }
 
 // Product Actions
@@ -101,6 +132,7 @@ export async function getProductsAction() {
 
 export async function addProductAction(productData) {
   try {
+    await requireAdmin();
     const product = await addProduct(productData);
     return { success: true, product };
   } catch (error) {
@@ -111,6 +143,7 @@ export async function addProductAction(productData) {
 
 export async function updateProductAction(id, productData) {
   try {
+    await requireAdmin();
     await updateProduct(id, productData);
     return { success: true };
   } catch (error) {
@@ -121,6 +154,7 @@ export async function updateProductAction(id, productData) {
 
 export async function deleteProductAction(id) {
   try {
+    await requireAdmin();
     const success = await deleteProduct(id);
     return { success };
   } catch (error) {
@@ -136,6 +170,7 @@ export async function getCategoriesAction() {
 
 export async function addCategoryAction(categoryData) {
   try {
+    await requireAdmin();
     const category = await addCategory(categoryData);
     return { success: true, category };
   } catch (error) {
@@ -146,6 +181,7 @@ export async function addCategoryAction(categoryData) {
 
 // Order Actions
 export async function getOrdersAction() {
+  await requireAdmin();
   return await getOrders();
 }
 
@@ -168,6 +204,7 @@ export async function createOrderAction(orderData) {
 
 export async function updateOrderStatusAction(orderId, status, trackingId) {
   try {
+    await requireAdmin();
     await updateOrderStatus(orderId, status, trackingId);
     try {
       const orders = await getOrders();
@@ -196,7 +233,31 @@ export async function trackOrderAction(orderId) {
   }
 }
 
-// Nodemailer Helper for OTP sending
+export async function sendOTPAction(email) {
+  try {
+    await dbConnect();
+    if (!email) {
+      return { success: false, error: "Email address is required." };
+    }
+
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    const expiresAt = new Date(Date.now() + 5 * 60 * 1000); // 5 minutes
+
+    let user = await User.findOne({ email: email.toLowerCase().trim() });
+    if (!user) {
+      user = new User({
+        _id: `u-${Date.now()}`,
+        email: email.toLowerCase().trim(),
+        name: "Village Friend",
+        role: "user",
+        isVerified: false
+      });
+    }
+
+    user.otpCode = otp;
+    user.otpExpires = expiresAt;
+    await user.save();
+
     const emailResult = await sendOTPEmail(email.toLowerCase().trim(), otp);
 
     return { 
@@ -245,9 +306,12 @@ export async function verifyOTPAction(email, otp) {
     };
 
     const cookieStore = await cookies();
-    cookieStore.set("gaonse_session", JSON.stringify(sessionUser), {
+    cookieStore.set("gaonse_session", signSession(sessionUser), {
       path: "/",
-      maxAge: 60 * 60 * 24 * 7 // 7 days
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax"
     });
 
     return { success: true, user: sessionUser };
