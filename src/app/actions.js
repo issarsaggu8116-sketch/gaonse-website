@@ -345,11 +345,16 @@ export async function sendOTPAction(email) {
 
     const emailResult = await sendOTPEmail(normalizedEmail, otp);
 
+    if (!emailResult.success) {
+      return {
+        success: false,
+        error: emailResult.error || "Failed to send OTP email."
+      };
+    }
+
     return { 
       success: true, 
-      message: !emailResult.sandbox ? "OTP sent to your email." : "OTP generated in sandbox mode.",
-      sandbox: emailResult.sandbox,
-      otp: emailResult.sandbox ? otp : null
+      message: "OTP sent to your email."
     };
   } catch (error) {
     console.error("Send OTP Action error", error);

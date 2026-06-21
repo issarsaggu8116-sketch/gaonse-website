@@ -35,7 +35,7 @@ export default function LoginPage() {
   const [otpSent, setOtpSent] = useState(false);
   const [otpVal, setOtpVal] = useState("");
   const [otpTimer, setOtpTimer] = useState(0);
-  const [sandboxOtp, setSandboxOtp] = useState("");
+
 
   // Form Fields
   const [formData, setFormData] = useState({
@@ -89,9 +89,7 @@ export default function LoginPage() {
         setOtpSent(true);
         setOtpTimer(60); // 60 seconds countdown
         setSuccess(res.message);
-        if (res.sandbox && res.otp) {
-          setSandboxOtp(res.otp);
-        }
+
       } else {
         setError(res.error || "Failed to send OTP.");
       }
@@ -200,7 +198,6 @@ export default function LoginPage() {
   const handleResendOTP = async () => {
     if (otpTimer > 0) return;
     setOtpVal("");
-    setSandboxOtp("");
     const mockEvent = { preventDefault: () => {} };
     await handleSendOTP(mockEvent);
   };
@@ -220,7 +217,6 @@ export default function LoginPage() {
                 setSuccess("");
                 setOtpSent(false);
                 setOtpVal("");
-                setSandboxOtp("");
               }}
               className={`flex-1 py-4 text-xs uppercase font-extrabold tracking-wider transition-colors ${
                 mode === "login"
@@ -419,15 +415,7 @@ export default function LoginPage() {
                 </div>
               )}
 
-              {/* Sandbox Mode OTP Assist Banner */}
-              {sandboxOtp && (
-                <div className="bg-[#D6A15F]/10 border border-[#D6A15F]/35 p-3 rounded-lg text-center space-y-1">
-                  <span className="text-[9px] text-[#7A4E2D] font-bold uppercase tracking-wider block">Sandbox Mode Developer Assist</span>
-                  <p className="text-xs text-[#2C2520] font-sans">
-                    Use Verification Code: <strong className="font-mono text-[#7A4E2D] text-sm bg-white px-2 py-0.5 rounded border border-[#F5EFEB] shadow-sm ml-1 select-all">{sandboxOtp}</strong>
-                  </p>
-                </div>
-              )}
+
 
               {error && (
                 <div className="text-xs text-[#D9534F] bg-[#D9534F]/5 border border-[#D9534F]/20 p-3 rounded-lg font-semibold animate-shake">

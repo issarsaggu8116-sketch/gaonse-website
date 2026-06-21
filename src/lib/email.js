@@ -49,8 +49,8 @@ export async function sendOTPEmail(email, otp) {
   `;
 
   if (!transporter) {
-    console.log(`[GaonSe Sandbox] SMTP is not configured. Mock OTP Email to ${email}: Code ${otp}`);
-    return { success: true, sandbox: true, otp };
+    console.warn(`[GaonSe Email Error] SMTP is not configured. Failed to send OTP email to ${email}`);
+    return { success: false, error: "SMTP is not configured. Please setup your mail environment variables." };
   }
 
   try {
@@ -60,11 +60,10 @@ export async function sendOTPEmail(email, otp) {
       subject: "GaonSe - Your One-Time Password (OTP) for Login",
       html: htmlContent,
     });
-    return { success: true, sandbox: false };
+    return { success: true };
   } catch (error) {
     console.warn(`[GaonSe Email Error] Failed to send OTP email to ${email}:`, error.message);
-    console.log(`[GaonSe Sandbox Fallback] Mock OTP Email: Code ${otp}`);
-    return { success: true, sandbox: true, error: error.message, otp };
+    return { success: false, error: error.message };
   }
 }
 
@@ -222,8 +221,8 @@ export async function sendOrderReceiptEmail(order) {
   `;
 
   if (!transporter) {
-    console.log(`[GaonSe Sandbox] SMTP is not configured. Mock Invoice email to ${to} (Order ID: ${order.id})`);
-    return { success: true, sandbox: true };
+    console.warn(`[GaonSe Email Error] SMTP is not configured. Failed to send order receipt to ${to}`);
+    return { success: false, error: "SMTP is not configured." };
   }
 
   try {
@@ -233,11 +232,10 @@ export async function sendOrderReceiptEmail(order) {
       subject: `GaonSe Order Confirmed - Invoice #${order.id}`,
       html: htmlContent,
     });
-    return { success: true, sandbox: false };
+    return { success: true };
   } catch (error) {
     console.warn(`[GaonSe Email Error] Failed to send order receipt to ${to}:`, error.message);
-    console.log(`[GaonSe Sandbox Fallback] Mock Invoice email was triggered for Order ID ${order.id}`);
-    return { success: true, sandbox: true, error: error.message };
+    return { success: false, error: error.message };
   }
 }
 
@@ -346,8 +344,8 @@ export async function sendOrderStatusUpdateEmail(order) {
   `;
 
   if (!transporter) {
-    console.log(`[GaonSe Sandbox] SMTP is not configured. Mock status update to ${to} (Order ID: ${order.id}, Status: ${order.status})`);
-    return { success: true, sandbox: true };
+    console.warn(`[GaonSe Email Error] SMTP is not configured. Failed to send order status update to ${to}`);
+    return { success: false, error: "SMTP is not configured." };
   }
 
   try {
@@ -357,10 +355,9 @@ export async function sendOrderStatusUpdateEmail(order) {
       subject,
       html: htmlContent,
     });
-    return { success: true, sandbox: false };
+    return { success: true };
   } catch (error) {
     console.warn(`[GaonSe Email Error] Failed to send order status update to ${to}:`, error.message);
-    console.log(`[GaonSe Sandbox Fallback] Mock status update email was triggered for Order ID ${order.id} (Status: ${order.status})`);
-    return { success: true, sandbox: true, error: error.message };
+    return { success: false, error: error.message };
   }
 }
