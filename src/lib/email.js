@@ -127,6 +127,11 @@ export async function sendOrderReceiptEmail(order) {
           Namaste <strong>${order.shippingDetails.name}</strong>,<br>
           Thank you for choosing local, farmer-direct harvests. Your payment has been authorized and your order is being processed for consolidation.
         </p>
+        <div style="margin: 20px 0; text-align: center;">
+          <a href="${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/track-order?id=${order.id}" style="background-color: #7A4E2D; color: #FDFBF7; padding: 12px 24px; text-decoration: none; border-radius: 24px; font-size: 12px; font-weight: bold; display: inline-block; font-family: sans-serif; box-shadow: 0 2px 4px rgba(122,78,45,0.15);">
+            Track Your Order Live
+          </a>
+        </div>
       </div>
 
       <!-- Order Details / Summary Box -->
@@ -302,6 +307,11 @@ export async function sendOrderStatusUpdateEmail(order) {
           Dear <strong>${order.shippingDetails.name}</strong>,<br><br>
           ${description}
         </p>
+        <div style="margin: 20px 0; text-align: center;">
+          <a href="${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/track-order?id=${order.id}" style="background-color: #7A4E2D; color: #FDFBF7; padding: 12px 24px; text-decoration: none; border-radius: 24px; font-size: 12px; font-weight: bold; display: inline-block; font-family: sans-serif; box-shadow: 0 2px 4px rgba(122,78,45,0.15);">
+            Track Your Order Live Status
+          </a>
+        </div>
       </div>
 
       <!-- Logistics / Status Card -->

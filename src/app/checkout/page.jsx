@@ -150,10 +150,17 @@ export default function CheckoutPage() {
               <p>📦 Expected Dispatch: <strong>Within 24 Hours</strong></p>
               <p>🚚 Courier Logistics Partner: <strong>Delhivery Standard Air</strong></p>
             </div>
-            <div className="pt-2">
+            <div className="flex flex-col sm:flex-row justify-center gap-3 pt-2">
+              <Link 
+                href={`/track-order?id=${lastOrderId}`} 
+                className="bg-accent hover:bg-[#a53b12] text-[#FFFDF8] font-bold text-xs py-3.5 px-6 rounded-full transition-all shadow-md flex items-center justify-center gap-1.5"
+              >
+                <span>Track Your Order</span>
+                <ArrowRight size={14} />
+              </Link>
               <Link 
                 href="/shop" 
-                className="bg-primary text-cream-light font-bold text-xs py-3 px-6 rounded-full hover:bg-primary-light transition-all shadow-sm"
+                className="bg-[#F5EFEB] border border-[#E5DFD9] text-[#7A4E2D] hover:bg-[#E5DFD9] font-bold text-xs py-3.5 px-6 rounded-full transition-all flex items-center justify-center"
               >
                 Continue Sourcing
               </Link>

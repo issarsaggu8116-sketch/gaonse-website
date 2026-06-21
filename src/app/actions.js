@@ -315,8 +315,15 @@ export async function sendOTPAction(email) {
     const normalizedEmail = email.toLowerCase().trim();
     let user = await User.findOne({ email: normalizedEmail });
     
+    if (!user) {
+      return { 
+        success: false, 
+        error: "No account found with this email. Please create an account first." 
+      };
+    }
+    
     // Rate limiting: 60 seconds cooldown check
-    if (user && user.otpLastRequested) {
+    if (user.otpLastRequested) {
       const timeSinceLastOtp = Date.now() - new Date(user.otpLastRequested).getTime();
       const cooldownMs = 60 * 1000;
       if (timeSinceLastOtp < cooldownMs) {
@@ -330,16 +337,6 @@ export async function sendOTPAction(email) {
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000); // 5 minutes
-
-    if (!user) {
-      user = new User({
-        _id: `u-${Date.now()}`,
-        email: normalizedEmail,
-        name: "Village Friend",
-        role: "user",
-        isVerified: false
-      });
-    }
 
     user.otpCode = otp;
     user.otpExpires = expiresAt;

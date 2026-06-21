@@ -130,6 +130,11 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2.5 text-xs text-cream-dark">
               <li>
+                <Link href="/track-order" className="hover:text-theme-white font-bold text-secondary transition-colors">
+                  Track Your Order
+                </Link>
+              </li>
+              <li>
                 <Link href="/privacy-policy" className="hover:text-theme-white transition-colors">
                   Privacy Policy
                 </Link>

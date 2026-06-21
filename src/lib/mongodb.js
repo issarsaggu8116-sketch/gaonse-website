@@ -48,13 +48,6 @@ async function dbConnect() {
 
 async function seedDatabase() {
   try {
-    const productCount = await Product.countDocuments();
-    if (productCount > 0) {
-      return; // Database is already seeded
-    }
-
-    console.log("MongoDB database is empty! Starting auto-seeding from db.json...");
-
     const dbJsonPath = path.join(process.cwd(), "src/data/db.json");
     let fileContent;
     try {
@@ -67,7 +60,8 @@ async function seedDatabase() {
     const localDb = JSON.parse(fileContent);
 
     // 1. Seed Categories
-    if (localDb.categories && localDb.categories.length > 0) {
+    const categoryCount = await Category.countDocuments();
+    if (categoryCount === 0 && localDb.categories && localDb.categories.length > 0) {
       const categoriesToSeed = localDb.categories.map((cat) => ({
         _id: cat.slug,
         name: cat.name,
@@ -80,7 +74,8 @@ async function seedDatabase() {
     }
 
     // 2. Seed Products
-    if (localDb.products && localDb.products.length > 0) {
+    const productCount = await Product.countDocuments();
+    if (productCount === 0 && localDb.products && localDb.products.length > 0) {
       const productsToSeed = localDb.products.map((p) => ({
         _id: p.id,
         name: p.name,
@@ -108,7 +103,8 @@ async function seedDatabase() {
     }
 
     // 3. Seed Users
-    if (localDb.users && localDb.users.length > 0) {
+    const userCount = await User.countDocuments();
+    if (userCount === 0 && localDb.users && localDb.users.length > 0) {
       const usersToSeed = localDb.users.map((u) => ({
         _id: u.id,
         name: u.name,
@@ -119,10 +115,30 @@ async function seedDatabase() {
       }));
       await User.insertMany(usersToSeed);
       console.log(`Seeded ${usersToSeed.length} users to MongoDB.`);
+    } else {
+      // Ensure admin exists
+      const adminEmail = "admin-harvest-master@gaonse.com";
+      const adminExists = await User.findOne({ email: adminEmail });
+      if (!adminExists && localDb.users) {
+        const adminData = localDb.users.find(u => u.role === "admin" || u.email === adminEmail);
+        if (adminData) {
+          const newAdmin = new User({
+            _id: adminData.id || "u-admin",
+            name: adminData.name,
+            email: adminData.email,
+            password: adminData.password,
+            role: adminData.role || "admin",
+            isVerified: true
+          });
+          await newAdmin.save();
+          console.log("Admin user seeded separately as it was missing.");
+        }
+      }
     }
 
     // 4. Seed Orders
-    if (localDb.orders && localDb.orders.length > 0) {
+    const orderCount = await Order.countDocuments();
+    if (orderCount === 0 && localDb.orders && localDb.orders.length > 0) {
       const ordersToSeed = localDb.orders.map((o) => ({
         _id: o.id,
         date: o.date,
