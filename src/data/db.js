@@ -13,14 +13,17 @@ async function connect() {
 export async function getUsers() {
   await connect();
   const users = await User.find({}).lean();
-  return JSON.parse(JSON.stringify(users));
+  const serialized = JSON.parse(JSON.stringify(users));
+  return serialized.map(u => ({ ...u, id: u._id }));
 }
 
 export async function findUserByEmail(email) {
   await connect();
   if (!email) return null;
   const user = await User.findOne({ email: email.toLowerCase().trim() }).lean();
-  return user ? JSON.parse(JSON.stringify(user)) : null;
+  if (!user) return null;
+  const serialized = JSON.parse(JSON.stringify(user));
+  return { ...serialized, id: serialized._id };
 }
 
 export async function createUser(user) {
@@ -31,14 +34,16 @@ export async function createUser(user) {
     ...user,
   });
   await newUser.save();
-  return JSON.parse(JSON.stringify(newUser));
+  const serialized = JSON.parse(JSON.stringify(newUser));
+  return { ...serialized, id: serialized._id };
 }
 
 // Product CRUD Helpers
 export async function getProducts() {
   await connect();
   const products = await Product.find({}).sort({ createdAt: -1 }).lean();
-  return JSON.parse(JSON.stringify(products));
+  const serialized = JSON.parse(JSON.stringify(products));
+  return serialized.map(p => ({ ...p, id: p._id }));
 }
 
 export async function addProduct(product) {
@@ -117,7 +122,8 @@ export async function addCategory(category) {
 export async function getOrders() {
   await connect();
   const orders = await Order.find({}).sort({ createdAt: -1 }).lean();
-  return JSON.parse(JSON.stringify(orders));
+  const serialized = JSON.parse(JSON.stringify(orders));
+  return serialized.map(o => ({ ...o, id: o._id }));
 }
 
 export async function createOrder(order) {
@@ -130,7 +136,8 @@ export async function createOrder(order) {
     ...order,
   });
   await newOrder.save();
-  return JSON.parse(JSON.stringify(newOrder));
+  const serialized = JSON.parse(JSON.stringify(newOrder));
+  return { ...serialized, id: serialized._id };
 }
 
 export async function updateOrderStatus(orderId, status, trackingId = "") {
