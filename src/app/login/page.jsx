@@ -449,17 +449,7 @@ export default function LoginPage() {
 
             </form>
 
-            {/* Default Sandbox accounts info boxes */}
-            {mode === "login" && (
-              <div className="bg-[#FDFBF7] border border-[#F5EFEB] rounded-xl p-4 space-y-2 text-[10px] text-[#5C5043]">
-                <h4 className="font-extrabold text-[#7A4E2D] font-serif uppercase tracking-wider flex items-center gap-1">
-                  <ShieldCheck size={14} className="text-[#D6A15F]" />
-                  <span>Sandbox Testing Credentials</span>
-                </h4>
-                <p>💡 **Password Sign In fallback**: Access admin panel with <strong className="text-[#7A4E2D]">admin-harvest-master@gaonse.com</strong> / password <strong className="text-[#7A4E2D]">GSe-984_Harvest_Secure_Master_#2026!</strong>.</p>
-                <p>💡 **OTP Sandbox**: Enter any email address (e.g. `customer@test.com`) in OTP Login. It automatically outputs a code card on-screen for login.</p>
-              </div>
-            )}
+
 
           </div>
 
